@@ -71,7 +71,10 @@ leftArrow.addEventListener("click", function changeBulletPointsLeft(dots) {
 
     bannerimage.setAttribute("src",`./assets/images/slideshow/${image.image}`)
 
+    const tagLine = slides[indexImage].tagLine;
+    document.querySelector('p').innerHTML = tagLine;
 
+    console.log('==tag', image.tagLine)
     setActiveDot(indexImage)
 })
 
