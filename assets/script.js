@@ -54,6 +54,9 @@ rightArrow.addEventListener("click", function changeBulletPointsRight(dots) {
     console.log(indexImage)
     bannerimage.setAttribute("src",`./assets/images/slideshow/${image.image}`)
 
+    const tagLine = slides[indexImage].tagLine;
+    document.querySelector('p').innerHTML = tagLine;
+
     console.log('==tag', image.tagLine)
     setActiveDot(indexImage)
 })
@@ -71,11 +74,6 @@ leftArrow.addEventListener("click", function changeBulletPointsLeft(dots) {
 
     setActiveDot(indexImage)
 })
-
-// Fonction pour le changement de texte
-
-
-
 
 
 // Fonction pour la création des points 
@@ -101,9 +99,6 @@ function setActiveDot() {
     }
   }
 }
-
-
-// Fonction pour mettre à jour 
 
 
 
