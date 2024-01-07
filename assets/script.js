@@ -1,20 +1,20 @@
 const slides = [
-	{
-		"image":"slide1.jpg",
-		"tagLine":"Impressions tous formats <span>en boutique et en ligne</span>"
-	},
-	{
-		"image":"slide2.jpg",
-		"tagLine":"Tirages haute définition grand format <span>pour vos bureaux et events</span>"
-	},
-	{
-		"image":"slide3.jpg",
-		"tagLine":"Grand choix de couleurs <span>de CMJN aux pantones</span>"
-	},
-	{
-		"image":"slide4.png",
-		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
-	}
+  {
+    "image":"slide1.jpg",
+    "tagLine":"Impressions tous formats <span>en boutique et en ligne</span>"
+  },
+  {
+    "image":"slide2.jpg",
+    "tagLine":"Tirages haute définition grand format <span>pour vos bureaux et events</span>"
+  },
+  {
+    "image":"slide3.jpg",
+    "tagLine":"Grand choix de couleurs <span>de CMJN aux pantones</span>"
+  },
+  {
+    "image":"slide4.png",
+    "tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
+  }
 ]
 
 
@@ -32,75 +32,71 @@ console.log(slides[1])
 
 
 // Fonction pour le changement de slide
-let indexImage = 0 
-
-// 3 lignes de code seulement sont nécessaires
+let indexImage = 0
 
 console.log("tableau",slides)
 rightArrow.addEventListener("click", function changeBulletPointsRight(dots) {
-    console.log ("je rentre dans ma function",indexImage)
- 
+  console.log ("je rentre dans ma function",indexImage)
 
-    if (indexImage < (slides.length - 1)){
-        indexImage++
-        console.log("je rentre dans le if",indexImage) 
-    } else {
-        indexImage = 0
-        console.log("else",indexImage)
-    }
 
-    const image = slides[indexImage]
-  
-    console.log(indexImage)
-    bannerimage.setAttribute("src",`./assets/images/slideshow/${image.image}`)
+  if (indexImage < (slides.length - 1)){
+    indexImage++
+    console.log("je rentre dans le if",indexImage)
+  } else {
+    indexImage = 0
+    console.log("else",indexImage)
+  }
 
-    const tagLine = slides[indexImage].tagLine;
-    document.querySelector('p').innerHTML = tagLine;
+  const image = slides[indexImage]
 
-    console.log('==tag', image.tagLine)
-    setActiveDot(indexImage)
+  console.log(indexImage)
+  bannerimage.setAttribute("src",`./assets/images/slideshow/${image.image}`)
+
+  const tagLine = slides[indexImage].tagLine;
+  document.querySelector('p').innerHTML = tagLine;
+
+  console.log('==tag', image.tagLine)
+  setActiveDot(indexImage)
 })
 
 leftArrow.addEventListener("click", function changeBulletPointsLeft(dots) {
-    if (indexImage == 0) {
-        indexImage = slides.length - 1
-    } else {
-        indexImage--
-    }
-    const image = slides[indexImage]
+  if (indexImage == 0) {
+    indexImage = slides.length - 1
+  } else {
+    indexImage--
+  }
+  const image = slides[indexImage]
 
-    bannerimage.setAttribute("src",`./assets/images/slideshow/${image.image}`)
+  bannerimage.setAttribute("src",`./assets/images/slideshow/${image.image}`)
 
-    const tagLine = slides[indexImage].tagLine;
-    document.querySelector('p').innerHTML = tagLine;
+  const tagLine = slides[indexImage].tagLine;
+  document.querySelector('p').innerHTML = tagLine;
 
-    console.log('==tag', image.tagLine)
-    setActiveDot(indexImage)
+  console.log('==tag', image.tagLine)
+  setActiveDot(indexImage)
 })
 
 
-// Fonction pour la création des points 
+// Fonction pour la création des points
 
-let dotsHTML = `
-    <div class="dot dot_selected"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-`
-dots.innerHTML = dotsHTML
+let dotsHTML = ``
+ slides.forEach(() => {
+   dots.innerHTML += ' <div class="dot"></div>'
+ })
+
 
 const listDots = document.querySelectorAll(".dot")
-console.log(listDots)
+
+setActiveDot()
 
 function setActiveDot() {
-  for (let index = 0; index < listDots.length; index++) {
-    const dot = listDots[index];
+  listDots.forEach((dot, index) => {
     if (index == indexImage) {
-        dot.classList.add('dot_selected');
+      dot.classList.add('dot_selected');
     } else {
-        dot.classList.remove('dot_selected')
+      dot.classList.remove('dot_selected')
     }
-  }
+  })
 }
 
 
