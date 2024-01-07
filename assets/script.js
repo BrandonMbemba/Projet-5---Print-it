@@ -17,45 +17,31 @@ const slides = [
   }
 ]
 
-
-
 const leftArrow = document.querySelector("#banner .arrow_left");
-console.log(leftArrow)
 const rightArrow = document.querySelector("#banner .arrow_right");
-console.log(rightArrow)
 const dots = document.querySelector (".dots");
-console.log(dots)
 const bannerimage = document.querySelector(".banner-img");
-console.log(bannerimage)
-
-console.log(slides[1])
-
 
 // Fonction pour le changement de slide
 let indexImage = 0
 
-console.log("tableau",slides)
+
 rightArrow.addEventListener("click", function changeBulletPointsRight(dots) {
-  console.log ("je rentre dans ma function",indexImage)
 
 
   if (indexImage < (slides.length - 1)){
     indexImage++
-    console.log("je rentre dans le if",indexImage)
   } else {
     indexImage = 0
-    console.log("else",indexImage)
   }
 
   const image = slides[indexImage]
 
-  console.log(indexImage)
   bannerimage.setAttribute("src",`./assets/images/slideshow/${image.image}`)
 
   const tagLine = slides[indexImage].tagLine;
   document.querySelector('p').innerHTML = tagLine;
 
-  console.log('==tag', image.tagLine)
   setActiveDot(indexImage)
 })
 
@@ -72,7 +58,6 @@ leftArrow.addEventListener("click", function changeBulletPointsLeft(dots) {
   const tagLine = slides[indexImage].tagLine;
   document.querySelector('p').innerHTML = tagLine;
 
-  console.log('==tag', image.tagLine)
   setActiveDot(indexImage)
 })
 
